@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
-public class SynchronizedInitializationSingletonTest
+public class SynchronizedGetInstanceSingletonTest
 {
   @Test
   public void hasThreadSafeInitialization()
@@ -32,7 +32,7 @@ public class SynchronizedInitializationSingletonTest
 
     public void run()
     {
-      usageNumber = SynchronizedInitializationSingleton.getInstance().incrementAndGetCounter();
+      usageNumber = SynchronizedGetInstanceSingleton.getInstance().incrementAndGetCounter();
     }
 
     public int getUsageNumber()

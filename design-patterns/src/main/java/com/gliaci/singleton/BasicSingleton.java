@@ -3,7 +3,7 @@ package com.gliaci.singleton;
 public class BasicSingleton
 {
   private static BasicSingleton instance;
-  private int usageNumber;
+  private int counter;
 
   private BasicSingleton()
   {
@@ -18,9 +18,9 @@ public class BasicSingleton
     return instance;
   }
 
-  public int getUsageNumber()
+  public int incrementAndGetCounter()
   {
-    usageNumber++;
-    return usageNumber;
+    counter++;
+    return counter;
   }
 }

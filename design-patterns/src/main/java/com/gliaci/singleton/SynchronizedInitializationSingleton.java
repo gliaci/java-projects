@@ -3,24 +3,31 @@ package com.gliaci.singleton;
 public class SynchronizedInitializationSingleton
 {
   private static SynchronizedInitializationSingleton instance;
-  private int usageNumber;
+  private int counter;
 
   private SynchronizedInitializationSingleton()
   {
   }
 
-  public static synchronized SynchronizedInitializationSingleton getInstance()
+  public static SynchronizedInitializationSingleton getInstance()
   {
     if (instance == null)
     {
-      instance = new SynchronizedInitializationSingleton();
+      synchronized (SynchronizedInitializationSingleton.class)
+      {
+        if (instance == null)
+        {
+          instance = new SynchronizedInitializationSingleton();
+        }
+      }
+
     }
     return instance;
   }
 
-  public int getUsageNumber()
+  public int incrementAndGetCounter()
   {
-    usageNumber++;
-    return usageNumber;
+    counter++;
+    return counter;
   }
 }
