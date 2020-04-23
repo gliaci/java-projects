@@ -11,8 +11,8 @@ public class BuilderObjectTest
   @Test
   public void withoutOptionalFields()
   {
-    BuilderObject.Builder builder = new BuilderObject.Builder(1L, "test");
-    final BuilderObject builtObject = builder.build();
+    BuilderObject builtObject = new BuilderObject.Builder(1L, "test").build();
+
     assertEquals(builtObject.getMandatoryId(), Long.valueOf(1L));
     assertEquals(builtObject.getMandatoryString(), "test");
     assertNull(builtObject.getOptionalString());
@@ -22,10 +22,10 @@ public class BuilderObjectTest
   @Test
   public void withOptionalFields()
   {
-    BuilderObject.Builder builder = new BuilderObject.Builder(1L, "test")
+    BuilderObject builtObject = new BuilderObject.Builder(1L, "test")
       .withOptionalString("optionalString")
-      .withOptionalBigDecimal(BigDecimal.ONE);
-    final BuilderObject builtObject = builder.build();
+      .withOptionalBigDecimal(BigDecimal.ONE).build();
+
     assertEquals(builtObject.getMandatoryId(), Long.valueOf(1L));
     assertEquals(builtObject.getMandatoryString(), "test");
     assertEquals(builtObject.getOptionalString(), "optionalString");
