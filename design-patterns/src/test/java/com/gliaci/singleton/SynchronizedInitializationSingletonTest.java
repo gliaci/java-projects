@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SynchronizedInitializationSingletonTest
 {
@@ -22,8 +22,8 @@ public class SynchronizedInitializationSingletonTest
     final List<Integer> usageNumbers = runnableList.stream()
                                                    .map(SingletonInitialization::getUsageNumber)
                                                    .collect(Collectors.toList());
-    assertEquals(usageNumbers.size(), 1000);
-    assertEquals(usageNumbers.stream().filter(x -> x.compareTo(1) == 0).count(), 1);
+    assertThat(usageNumbers).hasSize(1000);
+    assertThat(usageNumbers).contains(1);
   }
 
   private static class SingletonInitialization implements Runnable

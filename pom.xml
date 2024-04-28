@@ -19,6 +19,7 @@
     <maven.compiler.target>19</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.13.2</junit.version>
+    <assertj-core.version>3.25.3</assertj-core.version>
   </properties>
 
   <dependencies>
@@ -28,6 +29,13 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj-core.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 </project>

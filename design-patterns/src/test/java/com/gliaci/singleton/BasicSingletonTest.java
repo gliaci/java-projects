@@ -6,17 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class BasicSingletonTest
 {
   @Test
   public void differentObjectsReferToSameInstance()
   {
-    assertNotEquals(BasicSingleton.getInstance().incrementAndGetCounter(),
-      BasicSingleton.getInstance().incrementAndGetCounter());
+    assertThat(BasicSingleton.getInstance().incrementAndGetCounter()).isNotEqualTo(BasicSingleton.getInstance().incrementAndGetCounter());
   }
 
   @Test
@@ -31,8 +28,8 @@ public class BasicSingletonTest
     final List<Integer> usageNumbers = runnableList.stream()
                                                    .map(SingletonInitialization::getCounter)
                                                    .collect(Collectors.toList());
-    assertEquals(usageNumbers.size(), 100000);
-    assertTrue(usageNumbers.stream().filter(x -> x.compareTo(1) == 0).count() > 1);
+    assertThat(usageNumbers).hasSize(100000);
+    assertThat(usageNumbers).contains(1);
   }
 
   private static class SingletonInitialization implements Runnable
